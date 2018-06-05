@@ -1,10 +1,10 @@
 <template>
     <b-navbar id='header' toggleable="md" variant="light">
-        <div class="container">
-            <b-navbar-toggle target="nav_collapse"></b-navbar-toggle>
+        <div class="container">            
             <b-navbar-brand href="#">
                 <img :src="logo" width="48px" height="48px">
             </b-navbar-brand>
+            <b-navbar-toggle target="nav_collapse"></b-navbar-toggle>
             <b-collapse is-nav id="nav_collapse">
 
                 <!-- <b-navbar-nav>

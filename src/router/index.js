@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import HelloWorld from '@/views/HelloWorld'
+import CepView from '@/views/CepView'
 
 Vue.use(Router)
 
@@ -8,8 +8,8 @@ export default new Router({
     routes: [
         {
             path: '/',
-            name: 'HelloWorld',
-            component: HelloWorld
+            name: 'CepView',
+            component: CepView
         }
     ]
 })

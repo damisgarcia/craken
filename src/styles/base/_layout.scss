@@ -1,3 +1,11 @@
-.cp-logo{
-    max-width: 128px;
+html, body, #app{
+    @include fill;
+}
+
+#app{
+    display: flex;
+    flex-direction: column;
+    .content{
+        flex: 1;
+    }
 }
