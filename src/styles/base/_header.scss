@@ -1,3 +1,7 @@
+body{
+    @include oxygen;
+}
+
 #header{
     border-bottom: 1px solid $gray-400;
 }

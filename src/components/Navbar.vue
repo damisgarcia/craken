@@ -2,7 +2,7 @@
     <b-navbar id='header' toggleable="md" variant="light">
         <div class="container">            
             <b-navbar-brand href="#">
-                <img :src="logo" width="48px" height="48px">
+                <img :src="logo" width="96px">
             </b-navbar-brand>
             <b-navbar-toggle target="nav_collapse"></b-navbar-toggle>
             <b-collapse is-nav id="nav_collapse">
@@ -32,7 +32,7 @@
 </template>
 
 <script>
-import logo from '@/assets/logo.svg'
+import logo from '@/assets/logo.png'
 export default {
     name: 'Navbar',
     data: () => {
