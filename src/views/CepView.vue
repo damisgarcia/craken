@@ -6,7 +6,7 @@
             <div class="input-cep-container">
                 <input placeholder="Digite o CEP" />
             </div>
-            <h3>Não sabe o seu CEP? Digite o seu endereço.</h3>
+            <h3>Não sabe o seu CEP? Digite o seu endereço. {{ todos }} </h3>
         </div>
         <section>
             <div class="container">
@@ -32,11 +32,17 @@
 
 <script>
 import bg from '@/assets/header-bg.png'
+
 export default {
     name: 'CepView',
     data: () => {
         return {
             bg
+        }
+    },
+    computed: {
+        todos(){
+            return this.$store.getters.todos
         }
     }
 }
