@@ -2,64 +2,49 @@
     <div class='cp-input-search-by-cep'>
         <div class="input-cep-container">
             <form @submit="onSubmit()">
-                <input placeholder="Digite o CEP" autofocus v-model="cep" :disabled="loading" />
+                <input placeholder="Digite o CEP" autofocus v-model="cep" :disabled="isLoading" />
             </form>
         </div>
 
-        <b-modal v-model="modalCepShow" hide-footer hide-header centered >
+        <b-modal v-model="isModalVisible" hide-footer hide-header centered >
             <div class="d-block">
                 <div>
-                    <b-form-input v-model="newAddress.name" type="text" placeholder="Informe sua rua"></b-form-input>
+                    <b-form-input v-model="cacheAddress.name" type="text" placeholder="Informe sua rua"></b-form-input>
                 </div>
                 <div>
-                    <b-form-input v-model="newAddress.neighborhood" type="text" placeholder="Informe seu bairro"></b-form-input>
+                    <b-form-input v-model="cacheAddress.neighborhood" type="text" placeholder="Informe seu bairro"></b-form-input>
                 </div>
             </div>
-            <b-btn class="mt-3" variant="outline-danger" block @click="hideCep()">Close Me</b-btn>
+            <b-btn class="mt-3" variant="outline-danger" block @click="hideCepModal()">Close Me</b-btn>
         </b-modal>
 
     </div>
 </template>
 <script>
-import ViaCep from '@/services/ViaCep'
-
-const mapCep = (data) => {
-    return {
-        name: data.logradouro,
-        neighborhood: data.bairro,
-        city: data.uf
-    }
-}
-
 export default {
     name: 'InputSearchByCep',
-    data: () => {
+    data () {
         return {
-            cep: null,
-            loading: false,
-            modalCepShow: false,
-            newAddress: {}
+            cep: null
         }
     },
     methods: {
-        onSubmit: async () => {
-            this.showLoading()
-            let { data } = await ViaCep.get(`${this.cep}/json`)
-            this.newAddress = mapCep(data)
-            await this.showCep()
-            this.hideLoading()
+        onSubmit () {
+            return this.$store.dispatch('address/getCEP', this.cep)
         },
-        showCep: () => {
-            this.modalCepShow = true
+        hideCepModal () {
+            return this.$store.dispatch('address/showHideModal', false)
+        }
+    },
+    computed: {
+        cacheAddress () {
+            return this.$store.getters['address/cache']
         },
-        hideCep: () => {
-            this.modalCepShow = false
+        isLoading () {
+            return this.$store.getters['address/isLoading']
         },
-        showLoading: () => {
-            this.loading = true
-        },
-        hideLoading: () => {
-            this.loading = false
+        isModalVisible () {
+            return this.$store.getters['address/isModalVisible']
         }
     }
 }

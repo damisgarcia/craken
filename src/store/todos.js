@@ -7,14 +7,14 @@ export const state = {
 }
 
 export const mutations = {
-    DONE_TODO: (state, todo) => {
-        todo.checked = todo.checked
+    ADD_TODO: (state, newTodo) => {
+        state.todos.push(newTodo)
     }
 }
 
 export const actions = {
-    doneTodo: ({commit}, todo) => {
-        commit('DONE_TODO', todo)
+    addTodo: ({commit}, newTodo) => {
+        commit('ADD_TODO', newTodo)
     }
 }
 
@@ -22,3 +22,5 @@ export const getters = {
     todos: state => state.todos.filter((t) => !t.checked),
     dones: state => state.todos.filter((t) => t.checked)
 }
+
+export default { namespaced: true, state, getters, actions, mutations }

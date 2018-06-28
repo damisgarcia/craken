@@ -1,13 +1,14 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 
-import { state, actions, mutations, getters } from './todos'
+import todos from './todos'
+import address from './address'
 
 Vue.use(Vuex)
 
 export default new Vuex.Store({
-    state,
-    actions,
-    mutations,
-    getters
+    modules: {
+        todos,
+        address
+    }
 })

@@ -14,23 +14,41 @@
             <li v-for='(todo, index) in dones' v-bind:key="index">
                 <label>
                     {{todo.text}}
-                    <input type="checkbox" v-model="todo.checked" @change="done(todo)" />
+                    <input type="checkbox" v-model="todo.checked" />
                 </label>
             </li>
         </ul>
+        <form @submit="addTodo()">
+            <input v-model="newTodo.text" />
+            <button>Criar Tarefa</button>
+        </form>
     </div>
 </template>
 <script>
+import { clone } from 'lodash'
 export default {
     name: 'TodoView',
+    data () {
+        return {
+            newTodo: {
+                text: '',
+                checked: false
+            }
+        }
+    },
     methods: {
-        done: (todo) => {
-            this.$store.dispatch('doneTodo', todo)
+        addTodo () {
+            this.$store.dispatch('todos/addTodo', clone(this.newTodo))
+            this.newTodo.text = '' // clean text
         }
     },
     computed: {
-        todos: () => this.$store.getters.todos,
-        dones: () => this.$store.getters.dones
+        todos () {
+            return this.$store.getters['todos/todos']
+        },
+        dones () {
+            return this.$store.getters['todos/dones']
+        }
     }
 }
 
