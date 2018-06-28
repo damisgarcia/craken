@@ -22,19 +22,16 @@
 </template>
 <script>
 export default {
-  name: "TodoView",
-  methods: {
-      done(todo){
-          this.$store.dispatch('doneTodo', todo)
-      }
-  },
-  computed: {
-      todos(){
-          return this.$store.getters.todos
-      },
-      dones(){
-          return this.$store.getters.dones
-      }
-  }
-};
+    name: 'TodoView',
+    methods: {
+        done: (todo) => {
+            this.$store.dispatch('doneTodo', todo)
+        }
+    },
+    computed: {
+        todos: () => this.$store.getters.todos,
+        dones: () => this.$store.getters.dones
+    }
+}
+
 </script>

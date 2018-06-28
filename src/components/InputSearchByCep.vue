@@ -23,7 +23,7 @@
 <script>
 import ViaCep from '@/services/ViaCep'
 
-const mapCep = function(data){
+const mapCep = (data) => {
     return {
         name: data.logradouro,
         neighborhood: data.bairro,
@@ -33,7 +33,7 @@ const mapCep = function(data){
 
 export default {
     name: 'InputSearchByCep',
-    data: () => { 
+    data: () => {
         return {
             cep: null,
             loading: false,
@@ -42,25 +42,23 @@ export default {
         }
     },
     methods: {
-        async onSubmit(){
+        onSubmit: async () => {
             this.showLoading()
-            
-            let { data } = await ViaCep.get(`${this.cep}/json`)            
+            let { data } = await ViaCep.get(`${this.cep}/json`)
             this.newAddress = mapCep(data)
-
             await this.showCep()
             this.hideLoading()
         },
-        showCep(){
+        showCep: () => {
             this.modalCepShow = true
         },
-        hideCep(){
+        hideCep: () => {
             this.modalCepShow = false
         },
-        showLoading(){
+        showLoading: () => {
             this.loading = true
         },
-        hideLoading(){
+        hideLoading: () => {
             this.loading = false
         }
     }
@@ -72,6 +70,6 @@ export default {
         form{
             display: block;
             width: 100%;
-        }        
+        }
     }
 </style>

@@ -1,6 +1,6 @@
 <template>
     <b-navbar id='header' toggleable="md" variant="light">
-        <div class="container">            
+        <div class="container">
             <b-navbar-brand href="#">
                 <img :src="logo" width="96px">
             </b-navbar-brand>
@@ -31,6 +31,7 @@
 
 <script>
 import logo from '@/assets/logo.png'
+
 export default {
     name: 'Navbar',
     data: () => {
@@ -40,4 +41,5 @@ export default {
         }
     }
 }
+
 </script>
