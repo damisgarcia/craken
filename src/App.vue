@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import components from '@/components';
+import components from '@/components'
 
 export default {
     name: 'App',

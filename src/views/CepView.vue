@@ -3,9 +3,7 @@
       <header v-bind:style="{ 'background-image': 'url('+bg+')'}">
         <div class="container">
             <h1>Peça sua bebida, fácil</h1>
-            <div class="input-cep-container">
-                <input placeholder="Digite o CEP" />
-            </div>
+            <InputSearchByCep />
             <h3>Não sabe o seu CEP? Digite o seu endereço.</h3>
         </div>
         <section>
@@ -32,12 +30,16 @@
 
 <script>
 import bg from '@/assets/header-bg.png'
+
+import InputSearchByCep from '@/components/InputSearchByCep'
+
 export default {
     name: 'CepView',
     data: () => {
         return {
             bg
         }
-    }
+    },
+    components: {InputSearchByCep}
 }
-</script>
+</script> 
