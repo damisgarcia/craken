@@ -10,13 +10,15 @@ $header-height: 800px;
     background-size: cover;
     background-repeat: no-repeat;
     background-position: top center;    
-    text-align: center;
     > .container{
       display: flex;
       flex-direction: column;
       justify-content: center;    
       width: 100%;
       flex: 1;
+      h1, h3{
+        text-align: center;
+      }
     }
     section{
       color: white;
@@ -43,6 +45,7 @@ $header-height: 800px;
       }
     }
     .input-cep-container{
+      position: relative;
       display: flex;
       align-items: center;
       background-color: #fff;
@@ -52,12 +55,22 @@ $header-height: 800px;
       padding: 0px 24px;
       height: 64px;
       box-shadow: 15px 15px 33px transparentize($color: #000000, $amount: 0.65);
+      &.disabled{
+        background-color: #eee;
+      }
       input{
         display: block;
         width: 100%;
         text-align: center;
         border: none;
         font-size: 24px;
+        &:disabled{
+          background-color: transparent;
+        }
+      }
+      .badge{
+        position: absolute;
+        right: 16px;
       }
     }
   }
